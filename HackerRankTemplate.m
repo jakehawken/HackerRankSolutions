@@ -1,3 +1,4 @@
+//Solution for <#Problem Name#> on Hacker Rank: <#URL#>
 #import <Foundation/Foundation.h>
 
 @interface Solver : NSObject
@@ -7,7 +8,6 @@
 @implementation Solver
 + (void)findSolutionForInput:(NSArray*)input
 {
-  
   
   
   NSString *solution = [NSString stringWithFormat:@"Solution!"];
@@ -24,5 +24,3 @@ int main(int argc, const char * argv[]){
   }
   return 0;
 }
-
-
