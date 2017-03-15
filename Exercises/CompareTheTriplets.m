@@ -1,17 +1,18 @@
+//Solution for Compare the Triplets: https://www.hackerrank.com/challenges/compare-the-triplets
 #import <Foundation/Foundation.h>
 
-struct Problem {
+typedef struct {
   NSInteger clarity; 
   NSInteger originality; 
   NSInteger difficulty;
-};
+} Problem;
 
 @interface Solver : NSObject
-- (void)findSolutionForProblem1:(struct Problem)problem1 problem2:(struct Problem)problem2;
+- (void)findSolutionForProblem1:(Problem)problem1 problem2:(Problem)problem2;
 @end
 
 @implementation Solver
-- (void)findSolutionForProblem1:(struct Problem)problem1 problem2:(struct Problem)problem2
+- (void)findSolutionForProblem1:(Problem)problem1 problem2:(Problem)problem2
 {
   NSInteger points1 = 0;
   NSInteger points2 = 0;
@@ -52,7 +53,7 @@ int main(int argc, const char * argv[])
     int a2;
     scanf("%i %i %i",&a0,&a1,&a2);
     
-    struct Problem problem1;
+    Problem problem1;
     problem1.clarity = a0;
     problem1.originality = a1;
     problem1.difficulty = a2;
@@ -62,7 +63,7 @@ int main(int argc, const char * argv[])
     int b2;
     scanf("%i %i %i",&b0,&b1,&b2);
     
-    struct Problem problem2;
+    Problem problem2;
     problem2.clarity = b0;
     problem2.originality = b1;
     problem2.difficulty = b2;

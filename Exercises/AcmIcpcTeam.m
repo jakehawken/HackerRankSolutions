@@ -1,55 +1,5 @@
+//Solution for ACM-ICPC Team problem on Hacker Rank: https://www.hackerrank.com/challenges/acm-icpc-team
 #import <Foundation/Foundation.h>
-
-@interface Solver : NSObject
-+ (void)findAndPrintSolutionForInput: (NSArray<NSString*>*)input;
-@end
-
-@implementation Solver
-
-+ (void)findAndPrintSolutionForInput:(NSArray<NSString*> *)input
-{
-  int maxTopicsKnown = 0;
-  int numberOfMaxFound = 0;
-  
-  for (int i = 0; i < input.count - 1; i++)
-  {
-    NSString *person1 = input[i];
-    for (int j = i + 1; j < input.count; j++)
-    {
-      NSString *person2 = input[j];
-      int totalTopics = [self totalTopicsKnownByPerson1:person1 andPerson2:person2];
-      if (totalTopics > maxTopicsKnown)
-      {
-        maxTopicsKnown = totalTopics;
-        numberOfMaxFound = 1;
-      }
-      else if (totalTopics == maxTopicsKnown)
-      {
-        numberOfMaxFound++;
-      }
-    }
-  }
-  printf("%i\n", maxTopicsKnown);
-  printf("%i\n", numberOfMaxFound);
-}
-
-+ (int)totalTopicsKnownByPerson1: (NSString*)person1 andPerson2: (NSString*)person2
-{
-  int totalTopicsKnown = 0;
-  
-  for (int i = 0; i < person1.length; i++)
-  {
-    char substring1 = [person1 characterAtIndex:i];
-    char substring2 = [person2 characterAtIndex:i];
-    if ('1' == substring1  || '1' == substring2 )
-    {
-      totalTopicsKnown++;
-    }
-  }
-  return totalTopicsKnown;
-}
-
-@end
 
 int main(int argc, const char * argv[]){
   @autoreleasepool
@@ -58,17 +8,48 @@ int main(int argc, const char * argv[]){
     int numberOfTopics;
     scanf("%i %i", &numberOfPeople, &numberOfTopics);
     
-    NSMutableArray<NSString*> *people = [[NSMutableArray alloc] initWithCapacity:numberOfPeople];
+    char *people[numberOfPeople];
     
-    for(int i = 0; i < numberOfPeople; i++)
+    for (int i = 0; i < numberOfPeople; i++)
     {
-      char text[numberOfTopics + 1];
-      scanf("%s", text);
-      NSString *person = [NSString stringWithFormat:@"%s", text];
-      [people addObject:person];
+      char person[numberOfTopics];
+      scanf("%s",&person);
+      people[i] = strdup(person);
     }
     
-    [Solver findAndPrintSolutionForInput:people];
+    int maxTopics = 0;
+    int teamsAtMax = 0;
+
+    for (int i = 0; i < numberOfPeople; i ++)
+    {
+      char *person1 = people[i];
+      for (int j = i + 1; j < numberOfPeople; j++)
+      {
+        char *person2 = people[j];
+        
+        int numberOfTopicsTeamKnows = 0;
+        for (int k = 0; k < numberOfTopics; k++)
+        {
+          if (person1[k] == '1' || person2[k] == '1')
+          {
+            numberOfTopicsTeamKnows++;
+          }
+        }
+        
+        if (numberOfTopicsTeamKnows > maxTopics)
+        {
+          maxTopics = numberOfTopicsTeamKnows;
+          teamsAtMax = 1;
+        }
+        else if (numberOfTopicsTeamKnows == maxTopics)
+        {
+          teamsAtMax++;
+        }
+      }
+    }
+
+    printf("%i\n", maxTopics);
+    printf("%i", teamsAtMax);
   }
   return 0;
 }

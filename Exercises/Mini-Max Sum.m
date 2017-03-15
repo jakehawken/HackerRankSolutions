@@ -1,5 +1,4 @@
 //Solution for Min-Max Sum on HackerRank: https://www.hackerrank.com/challenges/mini-max-sum
-
 #import <Foundation/Foundation.h>
 
 @interface Solver : NSObject
