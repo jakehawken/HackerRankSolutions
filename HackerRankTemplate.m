@@ -1,12 +1,12 @@
-//Solution for <#Problem#> on Hacker Rank: <#URL#>
+//Solution for <#Problem#>: <#URL#>
 #import <Foundation/Foundation.h>
 
 @interface Solver : NSObject
-+ (void)findSolutionForInput:(NSArray*)input;
++ (void)findAndPrintSolutionForInput:(NSArray*)input;
 @end
 
 @implementation Solver
-+ (void)findSolutionForInput:(NSArray*)input
++ (void)findAndPrintSolutionForInput:(NSArray*)input
 {
   
   
@@ -20,7 +20,7 @@ int main(int argc, const char * argv[]){
   @autoreleasepool
   {
     NSArray *input = @[];
-    [Solver findSolutionForInput:input];
+    [Solver findAndPrintSolutionForInput:input];
   }
   return 0;
 }
